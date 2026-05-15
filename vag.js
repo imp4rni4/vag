@@ -1,6 +1,6 @@
 // followers
 (async function () {
-  let modal = document.querySelector("#followersModal .modal-body");
+  let modal = document.querySelector(".modal-body");
 
   let oldScroll = modal.scrollTop;
   let allRows = new Map();
@@ -19,7 +19,7 @@
     modal.scrollTop += 200;
     await new Promise((r) => setTimeout(r, 200));
 
-    if (modal.scrollTop >= modal.scrollHeight - 100) break;
+    if (modal.scrollTop + 50 >= modal.scrollHeight) break;
     count++;
   }
 
@@ -57,7 +57,7 @@
     modal.scrollTop += 200;
     await new Promise((r) => setTimeout(r, 200));
 
-    if (modal.scrollTop >= modal.scrollHeight - 100) break;
+    if (modal.scrollTop + 50 >= modal.scrollHeight) break;
     count++;
   }
 
