@@ -1,6 +1,6 @@
 // followers
 (async function () {
-  let modal = document.querySelector(".modal-body");
+  let modal = document.querySelector("#followersModal .modal-body");
 
   let oldScroll = modal.scrollTop;
   let allRows = new Map();
@@ -9,18 +9,17 @@
   modal.scrollTop = 0;
   await new Promise((r) => setTimeout(r, 300));
 
-  while (count < 100) {
+  while (true) {
     document.querySelectorAll(".user-row-id").forEach((row) => {
       let text = row.innerText;
       if (!allRows.has(text)) allRows.set(text, text);
     });
+    modal.scrollTop += 300;
+    await new Promise((r) => setTimeout(r, 250));
 
-    console.log("scrolling... Please wait");
-    modal.scrollTop += 200;
-    await new Promise((r) => setTimeout(r, 200));
-
-    if (modal.scrollTop + 50 >= modal.scrollHeight) break;
-    count++;
+    if (modal.scrollTop + modal.clientHeight >= modal.scrollHeight - 1) {
+      break;
+    }
   }
 
   modal.scrollTop = oldScroll;
@@ -47,18 +46,17 @@
   modal.scrollTop = 0;
   await new Promise((r) => setTimeout(r, 300));
 
-  while (count < 100) {
+  while (true) {
     document.querySelectorAll(".user-row-id").forEach((row) => {
       let text = row.innerText;
       if (!allRows.has(text)) allRows.set(text, text);
     });
+    modal.scrollTop += 300;
+    await new Promise((r) => setTimeout(r, 250));
 
-    console.log("scrolling... Please wait");
-    modal.scrollTop += 200;
-    await new Promise((r) => setTimeout(r, 200));
-
-    if (modal.scrollTop + 50 >= modal.scrollHeight) break;
-    count++;
+    if (modal.scrollTop + modal.clientHeight >= modal.scrollHeight - 1) {
+      break;
+    }
   }
 
   modal.scrollTop = oldScroll;
@@ -72,5 +70,5 @@
   a.download = `following.txt`;
   a.click();
 
-  console.log(`totall followeing: ${result.length}`);
+  console.log(`totall followings: ${result.length}`);
 })();
